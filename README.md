@@ -1,23 +1,24 @@
 ## What for?
 This Docker container provides an environment ready for contributing to Qt, based on Ubuntu 16.04. Desktop is accessible from a VNC clien (port 5901) or with a web browser (http://localhost:6901). It contains:
 
-* Latest Qt sources, compiled and ready for hacking or development
+* The latest Qt sources, compiled and ready for hacking or development
 * Qt online installer in the Home (/headless) folder, to install Qt Creator or different Qt versions
-* Essential tools: git, gdb, valgrind
+* Essential tools: git, gdb, valgrind and qtrepotools
+* The recommended Git configuration for Qt
 
 ## Usage
 Run this container with `--privileged` or `--security-opt seccomp:unconfined` to allow GDB to work correctly.
 
 ```
 # Expose ports 5901 (VNC) and 6901 (noVNC)
-docker run -d -p 5901:5901 -p 6901:6901 --privileged aleravat/qt-contrib:latest
+docker run -d -p 5901:5901 -p 6901:6901 --privileged aleravat/qt-contribution-env:latest
 ```
 
 ## Custom build
 After cloning this repository, you can build it with:
 ```
 # Redirects the output to standard output and build log
-docker build -t qt-contrib . | tee build.log
+docker build -t qt-contribution-env . | tee build.log
 ```
 
 Given the size of Qt sources, make sure Docker has enough memory and disk space available. The final image takes about 13GB after cloning and building the full repository.
@@ -38,7 +39,7 @@ Build arguments are passed to Docker with "--build-arg OPTIONNAME=value", and ca
 
 Command line example:
 ```
-docker build -t qt-contrib --build-arg CODEREVIEW_USER=aleravat --build-arg MODULE_SUBSET=essential . | tee build.log
+docker build -t qt-contribution-env --build-arg MAKE_FLAGS=-j9 --build-arg MODULE_SUBSET=essential . | tee build.log
 ```
 
 ### init-repository submodules
