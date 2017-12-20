@@ -1,4 +1,4 @@
-FROM consol/ubuntu-xfce-vnc:1.2.1 as build-environment
+FROM consol/ubuntu-xfce-vnc:1.2.1
 MAINTAINER Adrien Leravat <Pixep@users.noreply.github.com>
 
 USER 0
