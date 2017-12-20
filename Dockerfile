@@ -41,11 +41,11 @@ ARG CONFIGURE_FLAGS
 
 # Init and configure
 RUN ./init-repository --module-subset=${SUBSET} $USERNAME_FLAG
-RUN ./configure -developer-build -nomake examples -nomake tests -opensource -confirm-license -prefix $CONFIGURE_FLAGS $PWD
+RUN ./configure -developer-build -nomake examples -nomake tests -opensource -confirm-license -prefix $PWD $CONFIGURE_FLAGS
 
 # Build Qt
 ARG MAKE_FLAGS
-ENV ENV_MAKE_FLAGS ${MAKE_FLAGS:-j6}
+ENV ENV_MAKE_FLAGS ${MAKE_FLAGS:--j6}
 RUN make $MAKE_FLAGS
 
 # Qt Repo tools
