@@ -19,6 +19,8 @@ Run a new container, and expose ports 5901 (VNC) and 6901 (noVNC):
 docker run -d -p 5901:5901 -p 6901:6901 --privileged aleravat/qt-contribution-env:latest
 ```
 
+You can then use a VNC client to connect on `127.0.0.1:5901`, or browse to `http://127.0.0.1:6901`. The default password inherited from the base image is `vncpassword`.
+
 ## Custom build
 The command below will build the image from scratch. We used `tee` to redirects the output to standard output and a build log.
 ```
