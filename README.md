@@ -11,6 +11,10 @@ It contains:
 * Essential tools: git, gdb, valgrind and qtrepotools
 * The recommended Git configuration for Qt
 
+Websites:
+* Github: https://github.com/Pixep/qt-contribution-docker
+* Docker: https://hub.docker.com/r/aleravat/qt-contribution-env/
+
 ## Usage
 Run this container with `--privileged` or `--security-opt seccomp:unconfined` to allow GDB to work correctly.
 
