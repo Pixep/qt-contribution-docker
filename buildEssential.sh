@@ -1,1 +1,1 @@
-docker build -t qt-contribution-env MODULE_SUBSET=essential . | tee buildlog.txt
+docker build -t qt-contribution-env --build-arg MODULE_SUBSET=essential . | tee buildlog.txt
