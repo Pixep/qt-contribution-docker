@@ -1,23 +1,33 @@
 ## What for?
-This Docker container provides an environment ready for contributing to Qt, based on Ubuntu 16.04. Desktop is accessible from a VNC clien (port 5901) or with a web browser (http://localhost:6901). It contains:
+This Docker container provides an environment ready for contributing to Qt, based on Ubuntu 16.04. Desktop is accessible from a VNC client (port 5901) or with a web browser (http://localhost:6901).
 
+It can be used to:
+* Contribute to the Qt framework development, as it provides the standard tools for it
+* Develop against the latest version of Qt available, or a specific branch of tag, otherwise not available from binary releases
+
+It contains:
 * The latest Qt sources, compiled and ready for hacking or development
 * Qt online installer in the Home (/headless) folder, to install Qt Creator or different Qt versions
 * Essential tools: git, gdb, valgrind and qtrepotools
 * The recommended Git configuration for Qt
 
+Websites:
+* Github: https://github.com/Pixep/qt-contribution-docker
+* Docker: https://hub.docker.com/r/aleravat/qt-contribution-env/
+
 ## Usage
 Run this container with `--privileged` or `--security-opt seccomp:unconfined` to allow GDB to work correctly.
 
+Run a new container, and expose ports 5901 (VNC) and 6901 (noVNC):
 ```
-# Expose ports 5901 (VNC) and 6901 (noVNC)
 docker run -d -p 5901:5901 -p 6901:6901 --privileged aleravat/qt-contribution-env:latest
 ```
 
+You can then use a VNC client to connect on `127.0.0.1:5901`, or browse to `http://127.0.0.1:6901`. The default password inherited from the base image is `vncpassword`.
+
 ## Custom build
-After cloning this repository, you can build it with:
+The command below will build the image from scratch. We used `tee` to redirects the output to standard output and a build log.
 ```
-# Redirects the output to standard output and build log
 docker build -t qt-contribution-env . | tee build.log
 ```
 
