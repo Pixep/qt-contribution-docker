@@ -11,7 +11,7 @@ RUN apt-get update && \
 
 # Install tools
 RUN apt-get update && \
-    apt-get install -y gdb valgrind clang clang-format
+    apt-get install -y gdb valgrind clang clang-format terminator
 
 # Download Qt installer
 RUN wget http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run -P /headless/
